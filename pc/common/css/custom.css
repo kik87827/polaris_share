@@ -1,0 +1,191 @@
+.btn_google {
+  border: solid 1px #a0a0a0;
+  background-color: #fff;
+  color: #000000;
+}
+.btn_google i {
+  background-image: url(../../images/common/btn_google.svg);
+  background-color: #fff;
+}
+
+
+.btn_polaris {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  line-height: 50px;
+  background-color: #1d7ff9;
+  border-radius: 5px;
+  overflow: hidden;
+  font-family: 'Poppins', 'Noto Sans KR', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #1d7ff9;
+  letter-spacing: -0.4px;
+  margin-bottom: 10px;
+}
+
+.btn_polaris i {
+  width: 50px;
+  height: 50px;
+  margin-right: 2rem;
+  background-image: url(../../images/common/btn_po.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 4rem;
+  background-color: #fff;
+}
+
+
+.date_details_name {
+  cursor: pointer;
+}
+
+.date_details_name i,
+.detail_user_name i,
+.details--name a span ,
+.mypage_profile_thumb,
+.login_be i{
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  /* background-size: 100%; */
+  background-size: cover;
+}
+
+#ASIDE {
+  min-width: 145px;
+}
+
+@media screen and (max-width: 1300px) {
+  #ASIDE {
+    min-width: 100px;
+  }
+
+  #ASIDE .aside__wrap > a {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 108px;
+  }
+}
+
+
+.detail_title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 라인수 */
+  -webkit-box-orient: vertical;
+  word-wrap:break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-bottom: 5px;
+}
+
+.detail_tag a {
+  word-wrap:break-word;
+  overflow: hidden;
+  -webkit-line-clamp: 2; /* 라인수 */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+.detail_share_vote a.on
+{
+  border-color: #0d73f8;
+  background-color: #0d73f8;
+  color: #fff;
+}
+.detail_share_vote a.on i {
+ background-image: url(../../images/common/i_thumb_on.svg);
+}
+
+
+/* 스크롤바 설정*/
+body {
+  overflow-y: scroll;
+  box-sizing: border-box;
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+body::-webkit-scrollbar{
+  /* display: none; */
+  width: 5px;
+}
+
+/* 스크롤바 막대 설정*/
+body::-webkit-scrollbar-thumb{
+  height: 5%;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* 스크롤바 둥글게 설정    */
+  border-radius: 10px;
+}
+
+/* 스크롤바 뒷 배경 설정*/
+body::-webkit-scrollbar-track{
+  background-color: transparent
+}
+
+#modal_policy .office_desc {
+  font-size: 14px;
+}
+/* 모바일 policy modal */
+@media screen and (max-width: 610px) {
+  /* #modal_policy .office_title {
+    font-size: 16px;
+    letter-spacing: -0.5px;
+  } */
+  #modal_policy .office_desc {
+    font-size: 12px;
+    word-break: break-all;
+  }
+  #modal_policy .office_desc span {
+    word-break: break-all;
+  }
+}
+
+
+@media screen and (max-height: 750px) {
+  .l__modal_v2#modal_policy .modal_wrap {
+      overflow-y: auto;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: flex-start;
+  }
+}
+
+/* 랭킹 한줄 */
+.ranking--name {
+  width:71.2%
+}
+@media screen and (max-width: 767px) {
+  .ranking--number, .ranking--name {
+    width: calc(100% - 212px);
+  }
+}
+
+/* 로그인 영역 확대 */
+.header__search {
+  width: calc(100% - 457px);
+}
+.lnb--upload {
+  right: 157px;
+}
+.lnb--login > a {
+  width: 130px;
+}
+
+@media screen and (max-width: 978px) {
+  .header__search  {
+    width: calc(100% - 82px);
+  }
+
+  .lnb--login > a {
+    width: auto;
+  }
+}
