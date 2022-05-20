@@ -84,6 +84,7 @@ $(function() {
 
 document.addEventListener("DOMContentLoaded", function () {
     commonInit();
+    popupEvent();
 });
 
 function commonInit() {
@@ -222,4 +223,83 @@ function siblings(t) {
   return tempArr.filter(function (e) {
       return e != t;
   });
+}
+
+
+
+// 팝업
+function popupEvent(){
+  addDynamicEventListener(document.body, 'click', '.btn_layerclose, .closetrigger, .dimbg', function (e) {
+    e.preventDefault();
+      dimLayerHide(e.target.closest(".dimlayer_z"));
+  });
+}
+
+function dimLayerHide(target){
+  let target_dom = typeof target === "string" ? document.querySelector(target) : target;
+  let hideTime = 0;
+  target_dom.classList.remove("motion");
+  if(hideTime){clearTimeout(hideTime)}
+  hideTime = setTimeout(function(){
+    target_dom.classList.remove("active");
+  },530);
+}
+
+function dimLayerShow(target){
+  action(target);
+  function action(target){
+    let target_dom = document.querySelector(target) || target;
+    let dimlayer_z = target_dom.querySelectorAll(".dimlayer_z");
+    let dimlayer_bg = target_dom.querySelector(".dimbg");
+    let target_dom_initem = target_dom.querySelector(".dimlayer_tb");
+    let target_dom_layer_box = target_dom.querySelector(".layer_box");
+    let target_dom_initem_height = target_dom_initem.offsetHeight || 0;
+    let target_dom_layer_box_height = target_dom_layer_box.offsetHeight || 0;
+    let domHtml = document.querySelector("html");
+    let domBody = document.querySelector("body");
+    let showTime = 0;
+    dimlayer_z.forEach(function(elem,index){
+      elem.classList.remove("active","motion");
+    });
+    target_dom.classList.add("active");
+    if(showTime){clearTimeout(showTime)}
+    showTime = setTimeout(function(){
+      target_dom_initem_height = target_dom_initem.offsetHeight || 0;
+      target_dom.classList.add("motion");
+      if(target_dom_initem_height > window.innerHeight){
+        [].forEach.call(document.querySelectorAll('html,body'), function(el) {
+          el.classList.add("touchDis");
+        });
+        dimlayer_bg.style.width = "calc(100% - " +Number(window.innerWidth - target_dom_initem.offsetWidth)+ "px)";
+      }
+    },30);
+
+    target_dom_initem.addEventListener("click",function(e){
+      if(e.target.closest(".layer_box") === null){
+        dimLayerHide(this.closest(".dimlayer_z"));
+      }
+    },false);
+  }
+}
+
+
+function heightCompareFunc(target,padding){
+  action(target);
+  window.addEventListener("resize",function(){
+    action(target);
+  },false);
+  function action(target){
+    if(target === null || target === undefined){return;}
+    let maxHeight = [];
+    let target_dom = document.querySelectorAll(target) || target;
+    target_dom.forEach(function(elem,index){
+      elem.removeAttribute("style");
+        console.dir(elem.style.paddingTop);
+        maxHeight.push(elem.getBoundingClientRect().height - padding);
+    });
+
+    target_dom.forEach(function(elem,index){
+      elem.style.height = Math.max.apply(null,maxHeight) + "px";
+    });
+  }
 }
